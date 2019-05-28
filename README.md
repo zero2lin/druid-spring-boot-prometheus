@@ -1,1 +1,1 @@
-# druid-prometheus-exporter
+# druid-spring-boot-prometheus
