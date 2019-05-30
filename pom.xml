@@ -7,6 +7,9 @@
     <groupId>com.github.zero2lin</groupId>
     <artifactId>druid-spring-boot-prometheus</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <name>druid-spring-boot-prometheus</name>
     <description>This project help you to expose metrics of Alibaba Druid data source to prometheus</description>
@@ -33,14 +36,16 @@
     </scm>
 
     <distributionManagement>
-        <repository>
-            <id>packagecloud-travis</id>
-            <url>packagecloud+https://packagecloud.io/zero2lin/druid-spring-boot-prometheus</url>
-        </repository>
         <snapshotRepository>
-            <id>packagecloud-travis</id>
-            <url>packagecloud+https://packagecloud.io/zero2lin/druid-spring-boot-prometheus</url>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Nexus Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/stagsonatype-nexus-snapshotsing/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
     
     <build>
@@ -55,10 +60,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.5.RELEASE</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
                     <source>8</source>
                     <target>8</target>
@@ -88,6 +95,20 @@
                         <phase>package</phase>
                         <goals>
                             <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
