@@ -8,7 +8,28 @@
     <artifactId>druid-spring-boot-prometheus</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <DistributionManagement>
+        <Repository>
+            <Id>packagecloud-travis</Id>
+            <Url>
+                packagecloud+https://packagecloud.io/zero2lin/druid-spring-boot-prometheus
+            </Url>
+        </Repository>
+        <SnapshotRepository>
+            <Id>packagecloud-travis</Id>
+            <Url>
+                packagecloud+https://packagecloud.io/zero2lin/druid-spring-boot-prometheus
+            </Url>
+        </SnapshotRepository>
+    </DistributionManagement>
     <build>
+        <extensions>
+			<extension>
+				<groupId>io.packagecloud.maven.wagon</groupId>
+				<artifactId>maven-packagecloud-wagon</artifactId>
+				<version>0.0.6</version>
+			</extension>
+		</extensions>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
