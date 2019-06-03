@@ -6,6 +6,11 @@ cache:
   directories:
   - $HOME/.m2
 
+## export GPG details
+before_install:
+  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+  - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+
 deploy:
   provider: script
   script: "mvn --settings .travis.settings.xml -DskipTests=true -B clean deploy"
