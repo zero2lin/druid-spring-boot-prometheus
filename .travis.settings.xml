@@ -16,7 +16,7 @@
     </servers>
     <profiles>
         <profile>
-            <id>sonatype-nexus-snapshots</id>
+            <id>ossrh</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
